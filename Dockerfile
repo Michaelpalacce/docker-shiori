@@ -1,9 +1,9 @@
 # build stage
 FROM ghcr.io/ghcri/golang:1.17-alpine3.15 AS builder
-WORKDIR /src
+WORKDIR /src/shiori
 ARG TAG_VERSION
 
-RUN apk add git && git clone --depth 1 --branch $TAG_VERSION https://github.com/go-shiori/shiori.git shiori
+RUN apk add git && git clone --depth 1 --branch $TAG_VERSION https://github.com/go-shiori/shiori.git .
 RUN go build -ldflags '-s -w'
 
 # server image
